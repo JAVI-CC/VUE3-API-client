@@ -59,8 +59,8 @@
 
 <h4>Setup:</h4>
 <pre>
-<code>$ git clone https://github.com/JAVI-CC/Vue3-API-client.git
-$ cd Vue3-API-client
+<code>$ git clone https://github.com/JAVI-CC/VUE3-API-client.git
+$ cd VUE3-API-client
 $ docker-compose up -d --build</code>
 </pre>
 
