@@ -1,0 +1,11 @@
+version: '3.7' 
+services:
+  quasar: 
+    build: 
+      context:  . 
+      target: 'develop-step' 
+    ports: 
+    - '8080:8080' 
+    volumes: 
+    - '.:/app' 
+    command: /bin/sh -c "yarn && quasar dev"
