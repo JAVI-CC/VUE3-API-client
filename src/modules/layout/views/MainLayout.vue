@@ -81,7 +81,7 @@
           :color="dark ? 'white' : 'dark'"
           icon="fab fa-github"
           class="footer-pb-buttons"
-          href="https://github.com/JAVI-CC/Quasar-API-client"
+          href="https://github.com/JAVI-CC/VUE3-API-client"
           target="_blank"
           label="GitHub"
         />
