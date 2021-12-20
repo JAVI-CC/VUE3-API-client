@@ -9,7 +9,7 @@ import axios from 'axios'
 // "export default () => {}" function below (which runs individually
 // for each client)
 const api = axios.create({
-  baseURL: 'http://laraveljuegosapi.herokuapp.com',
+  baseURL: 'https://laraveljuegosapi.herokuapp.com',
   headers: {
     accept: "application/json"
   }
