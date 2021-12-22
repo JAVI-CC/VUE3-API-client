@@ -1,6 +1,6 @@
 <p align="center"><img src="public/capturas/logo.png" width="400"></p>
 
-<p>Application made with Vue 3 using Quasar Framework that contains responsive web interface, PWA and exported in APK using Apache Cordova. The application is connected to an API made in Laravel.<a href="https://laraveljuegosapi.herokuapp.com/api/juegos" target="_blank"> https://laraveljuegosapi.herokuapp.com</a></p>
+<p>Application made with Vue 3 using Quasar Framework that contains responsive web interface, PWA and exported in APK using Apache Cordova and capacitor. The application is connected to an API made in Laravel.<a href="https://laraveljuegosapi.herokuapp.com/api/juegos" target="_blank"> https://laraveljuegosapi.herokuapp.com</a></p>
 
 <span>Application made with Vue 3 consists of the creation of a CRUD and authentication system that come from a games API and the development of styles using Quasar Framework. The application made with Vue 3 contains the following functionalities:</span>
 
@@ -14,6 +14,7 @@
 <li>PWA (Progressive Web Apps).</li>
 <li>SPA (Single Page Application).</li>
 <li>Application exported in APK using Apache Cordova.</li>
+<li>Application exported in APK using Apache Capacitor.</li>
 <li>The project contains the files to implement it in Docker.</li>
 <li>Vue-validate.</li>
 <li>Helpers.</li>
@@ -30,11 +31,14 @@
 <h2>Start the app in the production mode</h2>
 <pre><code>$ yarn && quasar build -m pwa</code></pre>
 
-<h2>Export the app in APK in the development mode</h2>
+<h2>Export the app in APK apache cordova in the development mode</h2>
 <pre><code>$ yarn && quasar dev -m cordova -T android</code></pre>
 
-<h2>Export the app in APK in the production mode</h2>
+<h2>Export the app in APK apache cordova in the production mode</h2>
 <pre><code>$ yarn && quasar build -m cordova -T android</code></pre>
+
+<h2>Export the app in APK capactior in the production mode</h2>
+<pre><code>$ yarn && quasar build -m capacitor -T android -d</code></pre>
 
 <h2>Demo</h2>
 <a href="https://vue-api-client.vercel.app/" target="_blank">https://vue-api-client.vercel.app</a><br>
