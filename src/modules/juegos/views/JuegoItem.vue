@@ -68,7 +68,7 @@
 </template>
 
 <script>
-import { defineAsyncComponent, onMounted, ref} from "vue";
+import { defineAsyncComponent, onActivated, ref} from "vue";
 import useJuegos from "../composables/useJuegos";
 export default {
   name: "JuegoItem",
@@ -85,7 +85,7 @@ export default {
     const error = ref(false)
     const modalSearchNotResults = ref(false) 
 
-    onMounted(async () => {
+    onActivated(async () => {
       res.value = await item();
       if(res.value.error) {
         if(res.value.error == true) res.value.error = res.value.message

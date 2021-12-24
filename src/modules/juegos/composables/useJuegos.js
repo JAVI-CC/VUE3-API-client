@@ -182,6 +182,10 @@ const useJuegos = () => {
         return await store.dispatch('juegos/fetchJuego', route.params.slug)
     }
 
+    const toItem = async (slug) => {
+        router.push({ name: 'juego-item', params: { slug } })
+    }
+
     const itemUpdate = async (imagen = null) => {
         if(imagen == null) {
           const juego = await store.dispatch('juegos/fetchJuego', route.params.slug)
@@ -231,6 +235,10 @@ const useJuegos = () => {
         return await store.dispatch('juegos/updateJuego', juego)
     }
 
+    const toEditar = async (slug) => {
+        await router.push({ name: 'juego-editar', params: { slug } })
+    }
+
     const editar = async (slug) => {
         if (slug) await router.push({ name: 'juego-editar', params: { slug } })
         const juego = await store.dispatch('juegos/fetchJuego', route.params.slug)
@@ -276,6 +284,8 @@ const useJuegos = () => {
         notifSuccess,
         redirectJuegos,
         redirectJuegosItem,
+        toEditar,
+        toItem,
         updateJuego,
         webShareJuego,
 

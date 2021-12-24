@@ -120,11 +120,12 @@
             label="Texto a enviar"
             name="search"
             type="text"
+            clearable
             v-model="search"
             :rules="[
               (val) => v$.search.required.$response || 'Debes rellenar este campo',
               (val) =>
-                v$.search.minLength.$response || 'Debe de tener al menos 3 caracteres',
+                v$.search.minLength.$response || 'Debe de tener al menos 2 caracteres',
             ]"
           />
         </q-card-section>

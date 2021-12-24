@@ -12,7 +12,7 @@
               flat
               no-caps
               :label="nombre"
-              @click="item(slug)"
+              @click="toItem(slug)"
             />
           </div>
           <div class="col-2 text-right">
@@ -89,7 +89,7 @@ export default {
   },
   setup(props) {
     const {
-      item,
+      toItem,
       webShareJuego,
       fetchDesarrolladora,
       fetchGenero,
@@ -102,7 +102,7 @@ export default {
       //Methods
       fetchDesarrolladora,
       fetchGenero,
-      item,
+      toItem,
       webShareJuego,
 
       //variables

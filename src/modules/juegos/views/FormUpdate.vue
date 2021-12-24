@@ -188,7 +188,7 @@
 </template>
 
 <script>
-import { defineAsyncComponent, ref, onMounted } from "vue";
+import { defineAsyncComponent, ref, onActivated } from "vue";
 import useJuegos from "../composables/useJuegos";
 import sanitizeString from "/src/modules/layout/helpers/sanitizeString";
 import { required, minLength, maxLength } from "@vuelidate/validators";
@@ -239,7 +239,7 @@ export default {
     const error = ref(false);
     const modalUpdateJuego = ref(false);
 
-    onMounted(async () => {
+    onActivated(async () => {
       res.value = await itemUpdate();
       if (res.value.error) {
         if (res.value.error == true) res.value.error = res.value.message;

@@ -1,6 +1,6 @@
 <template>
   <div v-show="logged" class="float-right flex-end" :class="estilo ? 'q-mt-sm q-mr-md' : ''">
-    <q-btn unelevated padding="xs" color="yellow-9" :size="estilo ? 'xs' : 'sm'" icon="edit" class="q-mr-sm" @click="editar(slug)">
+    <q-btn unelevated padding="xs" color="yellow-9" :size="estilo ? 'xs' : 'sm'" icon="edit" class="q-mr-sm" @click="toEditar(slug)">
       <q-tooltip
         class="bg-yellow-9 q-py-xs"
         anchor="center left"
@@ -60,7 +60,7 @@ export default {
   },
   setup(props) {
     const { logged } = useAuth();
-    const {deleteJuego, notifError, notifSuccess, editar} = useJuegos();
+    const {deleteJuego, notifError, notifSuccess, toEditar} = useJuegos();
     const modalEliminarJuego = ref(false);
     const slugJuego = ref("");
 
@@ -69,7 +69,7 @@ export default {
       closeModalEliminarJuego() {
         modalEliminarJuego.value = false;
       },
-      editar,
+      toEditar,
       eliminarJuego: async () => {
         modalEliminarJuego.value = false;
         const resp = await deleteJuego(slugJuego.value)
