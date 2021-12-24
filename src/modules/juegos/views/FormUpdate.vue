@@ -267,7 +267,6 @@ export default {
         });
       },
       setDesarrolladora(val) {
-        console.log(val)
         editChangeDesarrolladora(val);
         //desarrolladora.value = val;
       },
@@ -310,7 +309,6 @@ export default {
           modalUpdateJuego.value = true;
           error.value = true;
         } else {
-          console.log(res.value);
           itemRedirectUpdate(res.value.slug);
           notifSuccess(`El juego ${editNombre.value} se ha actulizado correctamente`);
         }
