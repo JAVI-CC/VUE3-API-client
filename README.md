@@ -14,7 +14,7 @@
 <li>PWA (Progressive Web Apps).</li>
 <li>SPA (Single Page Application).</li>
 <li>Application exported in APK using Apache Cordova.</li>
-<li>Application exported in APK using Apache Capacitor.</li>
+<li>Application exported in APK using Capacitor.</li>
 <li>The project contains the files to implement it in Docker.</li>
 <li>Vue-validate.</li>
 <li>Helpers.</li>
