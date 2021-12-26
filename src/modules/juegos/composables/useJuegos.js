@@ -70,16 +70,6 @@ const useJuegos = () => {
         let filter = 'nombre'
         let order = 'ASC'
 
-        if (!store.getters['juegos/search'] || store.getters['juegos/search'] != keyword) {
-            resetOrderSearch()
-            order = 'ASC'
-        } else if (store.getters['juegos/order']) {
-            if (store.getters['juegos/order'].value == null) {
-                resetOrderSearch()
-                order = 'ASC'
-            }
-        }
-
         if (store.getters['juegos/order']) {
             if (store.getters['juegos/order'].value == 'nombreAsc') {
                 filter = 'nombre'
@@ -103,6 +93,19 @@ const useJuegos = () => {
         }
 
         const resp = await store.dispatch('juegos/searchJuegos', searchJuegos)
+
+        if (!resp.error) {
+            if (!store.getters['juegos/search'] || store.getters['juegos/search'] != keyword) {
+                resetOrderSearch()
+                order = 'ASC'
+            } else if (store.getters['juegos/order']) {
+                if (store.getters['juegos/order'].value == null) {
+                    resetOrderSearch()
+                    order = 'ASC'
+                }
+            }
+        }
+
         return resp
     }
 
@@ -187,12 +190,12 @@ const useJuegos = () => {
     }
 
     const itemUpdate = async (imagen = null) => {
-        if(imagen == null) {
-          const juego = await store.dispatch('juegos/fetchJuego', route.params.slug)
-          store.commit('juegos/setImageInitial', juego.imagen)
-          return juego
+        if (imagen == null) {
+            const juego = await store.dispatch('juegos/fetchJuego', route.params.slug)
+            store.commit('juegos/setImageInitial', juego.imagen)
+            return juego
         } else {
-            store.commit('juegos/setImageInitial', imagen)  
+            store.commit('juegos/setImageInitial', imagen)
         }
     }
 
@@ -342,7 +345,7 @@ const useJuegos = () => {
             set(val) {
                 let arrGeneros = []
                 for (let i = 0; i < val.length; i++) {
-                  arrGeneros.push({"nombre": val[i]});
+                    arrGeneros.push({ "nombre": val[i] });
                 }
                 store.commit('juegos/setEditGeneros', arrGeneros)
             }
@@ -365,7 +368,7 @@ const useJuegos = () => {
         }),
         editSlug: computed(() => store.getters['juegos/editSlug']),
         imageInitial: computed(() => store.getters['juegos/imageInitial']),
-        
+
     }
 }
 
