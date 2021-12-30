@@ -157,6 +157,16 @@ const useJuegos = () => {
         if (route.name != "juego-editar" && route.fullPath != "/") router.push({ name: "juegos" });
     }
 
+    const notifWarning = (message) => {
+        Notify.create({
+            type: 'warning',
+            position: 'top',
+            icon: 'warning',
+            message,
+        })
+        if (route.name != "juego-editar" && route.fullPath != "/") router.push({ name: "juegos" });
+    }
+
     const notifError = (message) => {
         Notify.create({
             type: 'negative',
@@ -263,11 +273,32 @@ const useJuegos = () => {
         });
     }
 
+    const addJuegoPusher = async (juego) => {
+        if (!store.getters['juegos/desarrolladora'] && !store.getters['juegos/genero'] && !store.getters['juegos/order'] && !store.getters['juegos/search']) return await store.commit('juegos/setPusherAddJuego', juego)
+    }
+
+    const deleteJuegoPusher = async (slug) => {
+        await store.commit('juegos/setPusherDeleteJuego', slug)
+        if (store.getters['juegos/juegos'].length <= 0 && route.fullPath === "/") {
+            await juegosHome()
+            await notifWarning(`El juego ha sido eliminado`)
+        } else if (store.getters['juegos/juego'].slug === slug && route.fullPath != "/") {
+            router.push({ name: "juegos" });
+            notifWarning(`El juego ${store.getters['juegos/juego'].nombre} ha sido eliminado`)
+        }
+    }
+
+    const updateJuegoPusher = async (juego, oldSlug) => {
+        return await store.commit('juegos/setPusherUpdateJuego', { juego, oldSlug })
+    }
+
     return {
         //Methods
         addJuego,
+        addJuegoPusher,
         crear,
         deleteJuego,
+        deleteJuegoPusher,
         editar,
         editChangeDesarrolladora,
         editImagenBase64,
@@ -290,6 +321,7 @@ const useJuegos = () => {
         toEditar,
         toItem,
         updateJuego,
+        updateJuegoPusher,
         webShareJuego,
 
         //Variables

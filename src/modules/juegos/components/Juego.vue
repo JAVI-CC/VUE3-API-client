@@ -1,7 +1,7 @@
 <template>
   <q-intersection transition="scale" class="div-intersection q-mx-sm q-mt-lg q-mb-md">
     <q-card class="my-card card-juego" flat bordered>
-      <q-img width="300px" height="400px" :src="imagen" />
+      <q-img width="300px" height="400px" :src="juego.imagen" />
       <q-card-section class="q-px-md">
         <div class="row items-center q-mb-sm">
           <div class="col-10">
@@ -11,8 +11,8 @@
               padding="none"
               flat
               no-caps
-              :label="nombre"
-              @click="toItem(slug)"
+              :label="juego.nombre"
+              @click="toItem(juego.slug)"
             />
           </div>
           <div class="col-2 text-right">
@@ -23,7 +23,7 @@
               padding="none"
               size="md"
               color="positive"
-              @click="webShareJuego(nombre, slug)"
+              @click="webShareJuego(juego.nombre, juego.slug)"
             />
           </div>
         </div>
@@ -32,19 +32,19 @@
           flat
           no-caps
           padding="none"
-          :label="desarrolladoraNombre"
-          :color="desarrolladoraSlug == desarrolladoraSelected ? 'orange-6' : ''"
-          @click="fetchDesarrolladora(desarrolladoraSlug)"
+          :label="juego.desarrolladora.nombre"
+          :color="juego.desarrolladora.slug == desarrolladoraSelected ? 'orange-6' : ''"
+          @click="fetchDesarrolladora(juego.desarrolladora.slug)"
         />
         <div class="div-text-descripcion">
           <q-item-label class="text-caption text-grey" lines="3">{{
-            descripcion
+            juego.descripcion
           }}</q-item-label>
         </div>
         <div class="q-mt-sm q-mb-xs">
           <q-btn
             class="q-my-sm q-mr-sm text-caption text-weight-medium"
-            v-for="genero in generos"
+            v-for="genero in juego.generos"
             :key="genero.slug"
             rounded
             no-caps
@@ -62,9 +62,9 @@
           style="font-size: 21px"
         />
         <div class="float-left text-subtitle2 q-ml-sm q-mt-sm row flex-start">
-          {{ fecha }}
+          {{ juego.fecha }}
         </div>
-        <ButtonsUpdateDelete :nombre="nombre" :slug="slug" :estiloInicio="true" />
+        <ButtonsUpdateDelete :nombre="juego.nombre" :slug="juego.slug" :estiloInicio="true" />
       </div>
     </q-card>
   </q-intersection>
@@ -110,15 +110,6 @@ export default {
       desarrolladoraSelected,
       generoSelected,
 
-      //Prop Juego
-      nombre: props.juego.nombre,
-      descripcion: props.juego.descripcion,
-      desarrolladoraNombre: props.juego.desarrolladora.nombre,
-      desarrolladoraSlug: props.juego.desarrolladora.slug,
-      generos: props.juego.generos,
-      fecha: props.juego.fecha,
-      slug: props.juego.slug,
-      imagen: props.juego.imagen,
     };
   },
 };

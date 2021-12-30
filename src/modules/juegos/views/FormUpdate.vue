@@ -188,7 +188,7 @@
 </template>
 
 <script>
-import { defineAsyncComponent, ref, onActivated } from "vue";
+import { defineAsyncComponent, ref, onActivated, onMounted } from "vue";
 import useJuegos from "../composables/useJuegos";
 import sanitizeString from "/src/modules/layout/helpers/sanitizeString";
 import { required, minLength, maxLength } from "@vuelidate/validators";
@@ -239,6 +239,13 @@ export default {
     const error = ref(false);
     const modalUpdateJuego = ref(false);
 
+    onMounted(async () => {
+      desarrolladoraOptions.value = await getDesarrolladoras();
+      desarrolladoraFilterOptions.value = desarrolladoraOptions.value;
+      generoOptions.value = await getGeneros();
+      generoFilterOptions.value = generoOptions.value;
+    });
+
     onActivated(async () => {
       res.value = await itemUpdate();
       if (res.value.error) {
@@ -246,10 +253,6 @@ export default {
         modalUpdateJuego.value = true;
         error.value = true;
       }
-      desarrolladoraOptions.value = await getDesarrolladoras();
-      desarrolladoraFilterOptions.value = desarrolladoraOptions.value;
-      generoOptions.value = await getGeneros();
-      generoFilterOptions.value = generoOptions.value;
     });
 
     return {

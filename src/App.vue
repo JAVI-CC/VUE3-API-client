@@ -6,6 +6,9 @@ import { onMounted, watch } from "vue";
 import { useQuasar } from "quasar";
 import useLayout from "./modules/layout/composables/useLayout";
 import useAuth from "./modules/auth/composables/useAuth";
+import useJuegos from "./modules/juegos/composables/useJuegos";
+require("./modules/juegos/services/pusher");
+
 export default {
   name: "App",
 
@@ -13,11 +16,35 @@ export default {
     const $q = useQuasar();
     const { dark, themeInitial } = useLayout();
     const { loggedStatus } = useAuth();
-    onMounted(async() => {
-      await loggedStatus()
-      const darkMode = await themeInitial(!$q.dark.isActive)
+    const { addJuegoPusher, deleteJuegoPusher, updateJuegoPusher } = useJuegos();
+    onMounted(async () => {
+      await loggedStatus();
+      const darkMode = await themeInitial(!$q.dark.isActive);
       $q.dark.set(darkMode);
-    })
+
+      if (process.env.PUSHER_APP_KEY) {
+        window.Echo.channel(process.env.PUSHER_APP_CHANNEL).listen(
+          "NewJuegoEvent",
+          (juego) => {
+            addJuegoPusher(juego.juego);
+          }
+        );
+
+        window.Echo.channel(process.env.PUSHER_APP_CHANNEL).listen(
+          "UpdateJuegoEvent",
+          (juego) => {
+            updateJuegoPusher(juego.juego, juego.oldSlug);
+          }
+        );
+
+        window.Echo.channel(process.env.PUSHER_APP_CHANNEL).listen(
+          "DeleteJuegoEvent",
+          (juego) => {
+            deleteJuegoPusher(juego.slug);
+          }
+        );
+      }
+    });
 
     watch(
       () => dark.value,

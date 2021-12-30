@@ -82,13 +82,29 @@ export const setLoadingDesactivate = (state) => {
   state.isLoading = false
 }
 
+export const setPusherAddJuego = (state, juego) => {
+  state.juegos = [juego].concat(state.juegos)
+}
+
+export const setPusherUpdateJuego = (state, {juego, oldSlug}) => {
+  const foundIndex = state.juegos.findIndex(x => x.slug === oldSlug);
+  if (foundIndex != undefined) state.juegos[foundIndex] = juego
+  if (state.juego.slug === oldSlug) state.juego = juego
+}
+
+export const setPusherDeleteJuego = (state, slug) => {
+  state.juegos = state.juegos.filter(function (juego) {
+    return juego.slug !== slug;
+  });
+}
+
 //Update
 export const setEditNombre = (state, nombre) => {
   state.juego.nombre = nombre
 }
 
 export const setEditDesarrolladora = (state, desarrolladora) => {
-  if(desarrolladora != "") state.juego.desarrolladora.nombre = desarrolladora
+  if (desarrolladora != "") state.juego.desarrolladora.nombre = desarrolladora
 }
 
 export const setEditDescripcion = (state, descripcion) => {
