@@ -293,9 +293,7 @@ export default {
           imagen.value = ""
           imagenBase64.value = ""
           fecha.value = ""
-          desarrolladoraOptions.value = []
           desarrolladoraFilterOptions.value = [] 
-          generoOptions.value = [] 
           generoFilterOptions.value = [] 
           generosSelected.value = [] 
           form.value.reset();

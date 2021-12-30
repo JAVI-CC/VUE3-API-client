@@ -84,6 +84,7 @@ export const setLoadingDesactivate = (state) => {
 
 export const setPusherAddJuego = (state, juego) => {
   state.juegos = [juego].concat(state.juegos)
+  state.juegos.splice(-1)
 }
 
 export const setPusherUpdateJuego = (state, {juego, oldSlug}) => {
@@ -96,6 +97,7 @@ export const setPusherDeleteJuego = (state, slug) => {
   state.juegos = state.juegos.filter(function (juego) {
     return juego.slug !== slug;
   });
+  state.items = state.items - 1
 }
 
 //Update
