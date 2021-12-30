@@ -93,13 +93,6 @@ export const setPusherUpdateJuego = (state, {juego, oldSlug}) => {
   if (state.juego.slug === oldSlug) state.juego = juego
 }
 
-export const setPusherDeleteJuego = (state, slug) => {
-  state.juegos = state.juegos.filter(function (juego) {
-    return juego.slug !== slug;
-  });
-  state.items = state.items - 1
-}
-
 //Update
 export const setEditNombre = (state, nombre) => {
   state.juego.nombre = nombre

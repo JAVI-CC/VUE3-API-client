@@ -16,7 +16,7 @@ export default {
     const $q = useQuasar();
     const { dark, themeInitial } = useLayout();
     const { loggedStatus } = useAuth();
-    const { addJuegoPusher, deleteJuegoPusher, updateJuegoPusher } = useJuegos();
+    const { addJuegoPusher, updateJuegoPusher } = useJuegos();
     onMounted(async () => {
       await loggedStatus();
       const darkMode = await themeInitial(!$q.dark.isActive);
@@ -34,13 +34,6 @@ export default {
           "UpdateJuegoEvent",
           (juego) => {
             updateJuegoPusher(juego.juego, juego.oldSlug);
-          }
-        );
-
-        window.Echo.channel(process.env.PUSHER_APP_CHANNEL).listen(
-          "DeleteJuegoEvent",
-          (juego) => {
-            deleteJuegoPusher(juego.slug);
           }
         );
       }

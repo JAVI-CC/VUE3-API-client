@@ -141,9 +141,7 @@ const useJuegos = () => {
 
     const deleteJuego = async (slug) => {
         const resp = await store.dispatch('juegos/deleteJuego', slug)
-        if (store.getters['juegos/juegos'].length <= 0) {
-            juegosHome()
-        }
+        juegosHome()
         return resp
     }
 
@@ -184,6 +182,7 @@ const useJuegos = () => {
 
     const redirectJuegosItem = () => {
         router.push({ name: "juegos" });
+        juegosHome()
     }
 
     const scrollTop = () => {
@@ -277,17 +276,6 @@ const useJuegos = () => {
         if (!store.getters['juegos/desarrolladora'] && !store.getters['juegos/genero'] && !store.getters['juegos/order'] && !store.getters['juegos/search']) return await store.commit('juegos/setPusherAddJuego', juego)
     }
 
-    const deleteJuegoPusher = async (slug) => {
-        await store.commit('juegos/setPusherDeleteJuego', slug)
-        if (store.getters['juegos/juegos'].length <= 0 && route.fullPath === "/") {
-            await juegosHome()
-            await notifWarning(`El juego ha sido eliminado`)
-        } else if (store.getters['juegos/juego'].slug === slug && route.fullPath != "/") {
-            router.push({ name: "juegos" });
-            notifWarning(`El juego ${store.getters['juegos/juego'].nombre} ha sido eliminado`)
-        }
-    }
-
     const updateJuegoPusher = async (juego, oldSlug) => {
         return await store.commit('juegos/setPusherUpdateJuego', { juego, oldSlug })
     }
@@ -298,7 +286,6 @@ const useJuegos = () => {
         addJuegoPusher,
         crear,
         deleteJuego,
-        deleteJuegoPusher,
         editar,
         editChangeDesarrolladora,
         editImagenBase64,
