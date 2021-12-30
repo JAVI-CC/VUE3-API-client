@@ -141,6 +141,7 @@ const useJuegos = () => {
 
     const deleteJuego = async (slug) => {
         const resp = await store.dispatch('juegos/deleteJuego', slug)
+        await scrollTop()
         juegosHome()
         return resp
     }
