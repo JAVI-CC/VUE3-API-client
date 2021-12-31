@@ -22,6 +22,7 @@
 <li>Props.</li>
 <li>Slots.</li>
 <li>Emits.</li>
+<li>Websockets with Pusher.</li>
 <li>The application is connected to a games API made in Laravel: <a href="https://github.com/JAVI-CC/Laravel-API-Server" target="_blank">https://github.com/JAVI-CC/Laravel-API-Server</a></li>
 </ul>
 
@@ -39,6 +40,22 @@
 
 <h2>Export the app in APK capactior in the production mode</h2>
 <pre><code>$ yarn && quasar build -m capacitor -T android -d</code></pre>
+
+<h2>Start the websockets with Pusher in the development mode</h2>
+<pre><code>1. In your <a href="https://pusher.com/" target="_blank">Pusher account</a> create a channel called: <strong>juegos-api</strong></code></pre>
+<pre><code>2. Enter the file: <strong>development.env</strong></code></pre>
+<pre><code>3. fill in the following credentials:
+<br><strong>PUSHER_APP_KEY=</strong>{App Keys in the channel juegos-api key}
+<br><strong>PUSHER_APP_CLUSTER=</strong>{App Keys in the channel juegos-api cluster}
+</code></pre>
+
+<h2>Start the websockets with Pusher in the production mode</h2>
+<pre><code>1. In your <a href="https://pusher.com/" target="_blank">Pusher account</a> create a channel called: <strong>juegos-api</strong></code></pre>
+<pre><code>2. Enter the file: <strong>production.env</strong></code></pre>
+<pre><code>3. fill in the following credentials:
+<br><strong>PUSHER_APP_KEY=</strong>{App Keys in the channel juegos-api key}
+<br><strong>PUSHER_APP_CLUSTER=</strong>{App Keys in the channel juegos-api cluster}
+</code></pre>
 
 <h2>Demo</h2>
 <a href="https://vue-api-client.vercel.app/" target="_blank">https://vue-api-client.vercel.app</a><br>
