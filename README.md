@@ -46,7 +46,7 @@
 <h2>Export the app in APK capactior in the production mode</h2>
 <pre><code>$ yarn && quasar build -m capacitor -T android -d</code></pre>
 
-<h2>Start the websockets with Pusher in the development mode</h2>
+<h2>Start the websockets with Pusher in the development mode (Optional)</h2>
 <pre><code>1. In your <a href="https://pusher.com/" target="_blank">Pusher account</a> create a channel called: <strong>juegos-api</strong></code></pre>
 <pre><code>2. Enter the file: <strong>development.env</strong></code></pre>
 <pre><code>3. fill in the following credentials:
@@ -54,7 +54,7 @@
 <br><strong>PUSHER_APP_CLUSTER=</strong>{App Keys in the channel juegos-api cluster}
 </code></pre>
 
-<h2>Start the websockets with Pusher in the production mode</h2>
+<h2>Start the websockets with Pusher in the production mode (Optional)</h2>
 <pre><code>1. In your <a href="https://pusher.com/" target="_blank">Pusher account</a> create a channel called: <strong>juegos-api</strong></code></pre>
 <pre><code>2. Enter the file: <strong>production.env</strong></code></pre>
 <pre><code>3. fill in the following credentials:
