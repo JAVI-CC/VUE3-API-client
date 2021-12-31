@@ -26,6 +26,11 @@
 <li>The application is connected to a games API made in Laravel: <a href="https://github.com/JAVI-CC/Laravel-API-Server" target="_blank">https://github.com/JAVI-CC/Laravel-API-Server</a></li>
 </ul>
 
+<h2>Demo</h2>
+<a href="https://vue-api-client.vercel.app/" target="_blank">https://vue-api-client.vercel.app</a><br>
+<span>User: admin@email.com</span><br>
+<span>Password: 12345678</span>
+
 <h2>Start the app in the development mode</h2>
 <pre><code>$ yarn && quasar dev -m pwa</code></pre>
 
@@ -56,11 +61,6 @@
 <br><strong>PUSHER_APP_KEY=</strong>{App Keys in the channel juegos-api key}
 <br><strong>PUSHER_APP_CLUSTER=</strong>{App Keys in the channel juegos-api cluster}
 </code></pre>
-
-<h2>Demo</h2>
-<a href="https://vue-api-client.vercel.app/" target="_blank">https://vue-api-client.vercel.app</a><br>
-<span>User: admin@email.com</span><br>
-<span>Password: 12345678</span>
 
 <hr>
 
