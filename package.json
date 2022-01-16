@@ -7,7 +7,14 @@
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
-    "test": "echo \"No test specified\" && exit 0"
+    "test": "echo \"See package.json => scripts for available tests.\" && exit 0",
+    "test:unit": "jest",
+    "test:unit:ci": "jest --ci",
+    "test:unit:coverage": "jest --coverage",
+    "test:unit:watch": "jest --watch",
+    "test:unit:watchAll": "jest --watchAll",
+    "serve:test:coverage": "quasar serve test/jest/coverage/lcov-report/ --port 8788",
+    "concurrently:dev:jest": "concurrently \"quasar dev\" \"jest --watch\""
   },
   "dependencies": {
     "@capacitor/cli": "^3.3.3",
@@ -20,14 +27,18 @@
     "laravel-echo": "^1.11.3",
     "pusher-js": "^7.0.3",
     "quasar": "^2.0.0",
+    "vue-router-mock": "^0.1.3",
     "vuex": "^4.0.1"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.13.14",
     "@quasar/app": "^3.0.0",
     "@quasar/quasar-app-extension-dotenv": "^1.1.0",
+    "@quasar/quasar-app-extension-testing": "^2.0.1",
+    "@quasar/quasar-app-extension-testing-unit-jest": "^3.0.0-alpha.7",
     "eslint": "^7.14.0",
     "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-jest": "^25.2.2",
     "eslint-plugin-vue": "^7.0.0",
     "eslint-webpack-plugin": "^2.4.0",
     "workbox-webpack-plugin": "^6.0.0"

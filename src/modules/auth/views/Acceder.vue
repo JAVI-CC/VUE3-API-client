@@ -2,7 +2,7 @@
   <div class="q-mt-xl"></div>
   <div class="div-acceder q-py-lg q-px-lg text-center">
     <div class="text-h4 text-weight-light q-mb-lg">Iniciar sesión</div>
-    <q-form ref="formAcceder" @submit.prevent="formLogin">
+    <q-form data-testid="form" ref="formAcceder" @submit.prevent="formLogin">
       <div class="col-md-12 q-mb-xs">
         <q-input
           clearable
@@ -75,7 +75,7 @@
 <script>
 import { defineAsyncComponent, ref } from "vue";
 import useAuth from "../composables/useAuth";
-import useLayout from "/src/modules/layout/composables/useLayout";
+import useLayout from "src/modules/layout/composables/useLayout";
 import { required, email, minLength, maxLength } from "@vuelidate/validators";
 import useVuelidate from "@vuelidate/core/dist/index.es";
 export default {

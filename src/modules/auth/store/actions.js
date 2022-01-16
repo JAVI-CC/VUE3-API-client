@@ -1,7 +1,7 @@
 import { api } from 'boot/axios'
 import { Loading } from 'quasar'
 
-export async function login({ commit }, credentials) {
+export const login = async({ commit }, credentials) => {
     Loading.show({ spinnerSize: 140, message: 'Cargando...' })
     const email = credentials.email
     const password = credentials.password
@@ -16,7 +16,7 @@ export async function login({ commit }, credentials) {
     }
 }
 
-export async function check({ commit }) {
+export const check = async({ commit }) => {
     try {
         const { data } = await api.get(`/api/auth/check`)
         commit('setCheckLogged', data)
@@ -26,7 +26,7 @@ export async function check({ commit }) {
     }
 }
 
-export async function logout({ commit }) {
+export const logout = async({ commit }) => {
     Loading.show({ spinnerSize: 140, message: 'Cargando...' })
     try {
         const { data } = await api.post(`/api/auth/logout`)
@@ -39,7 +39,7 @@ export async function logout({ commit }) {
     }
 }
 
-export async function register({ commit }, credentials) {
+export const register = async({ commit }, credentials) => {
     Loading.show({ spinnerSize: 140, message: 'Cargando...' })
     try {
         const { data } = await api.post(`/api/auth/register`, credentials)

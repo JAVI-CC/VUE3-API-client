@@ -7,7 +7,7 @@ import * as mutations from './mutations'
 
 const layoutModule = {
     namespaced: true,
-    actions,
+    //actions,
     getters,
     mutations,
     state

@@ -40,7 +40,6 @@ const useAuth = () => {
 
   const logout = async () => {    
     const resp = await store.dispatch('auth/logout')
-    inicio()
     return resp
   }
 
@@ -85,7 +84,7 @@ const useAuth = () => {
 
     //Variables
     logged: computed(() => store.getters['auth/logged']),
-    nombre: computed(() => `${store.getters['auth/nombre']}`),
+    nombre: computed(() => store.getters['auth/nombre']),
 
   }
 }

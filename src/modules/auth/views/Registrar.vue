@@ -2,7 +2,7 @@
   <div class="q-mt-xl"></div>
   <div class="div-acceder q-py-lg q-px-lg text-center" style="">
     <div class="text-h4 text-weight-light q-mb-lg">Registrate</div>
-    <q-form ref="formRegistrar" @submit.prevent="formRegister">
+    <q-form data-testid="form" ref="formRegistrar" @submit.prevent="formRegister">
       <div class="col-md-12 q-mb-xs">
         <q-input
           clearable

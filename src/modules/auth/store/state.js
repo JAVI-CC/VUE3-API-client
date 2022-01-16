@@ -1,4 +1,4 @@
 export default () => ({
     logged: false,
-    user: [],
+    user: null,
 })

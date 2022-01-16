@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en el Registrar Component debe de hacer match con el snapshot 1`] = `
+<div class="q-mt-xl"></div>
+<div class="div-acceder q-py-lg q-px-lg text-center">
+  <div class="text-h4 text-weight-light q-mb-lg">Registrate</div>
+  <q-form-stub autofocus="false" noerrorfocus="false" noresetfocus="false" greedy="false" data-testid="form"></q-form-stub>
+</div>
+<modal-info-stub open="false"></modal-info-stub>
+`;

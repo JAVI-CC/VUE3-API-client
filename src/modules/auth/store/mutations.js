@@ -11,14 +11,14 @@ export const setCheckLogged = (state, data) => {
     state.logged = data.logged
     if(!data.logged) {
       LocalStorage.remove('token')
+      state.user = null
     } else {
-      delete data.token
       state.user = data
     }
 }
 
 export const setLogout = (state) => {
     state.logged = false
-    state.user = []
+    state.user = null
     LocalStorage.remove('token')
 }
