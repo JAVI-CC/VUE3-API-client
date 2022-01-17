@@ -15,6 +15,7 @@
 <li>SPA (Single Page Application).</li>
 <li>Application exported in APK using Apache Cordova.</li>
 <li>Application exported in APK using Capacitor.</li>
+<li>Electron.</li>
 <li>The project contains the files to implement it in Docker.</li>
 <li>Vue-validate.</li>
 <li>Helpers.</li>
@@ -47,6 +48,9 @@
 
 <h2>Export the app in APK capactior in the production mode</h2>
 <pre><code>$ yarn && quasar build -m capacitor -T android -d</code></pre>
+
+<h2>Start the app in the electron mode</h2>
+<pre><code>$ yarn && quasar dev -m electron</code></pre>
 
 <h2>Start the websockets with Pusher in the development mode (Optional)</h2>
 <pre><code>1. In your <a href="https://pusher.com/" target="_blank">Pusher account</a> create a channel called: <strong>juegos-api</strong></code></pre>
