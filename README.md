@@ -66,6 +66,9 @@
 <h2>Start Jest unit tests</h2>
 <pre><code>$ yarn && [ yarn test:unit || quasar test --unit jest ]</code></pre>
 
+<h2>Start Cypress end to end tests</h2>
+<pre><code>$ yarn && yarn cypress:open</code></pre>
+
 <hr>
 
 <h3>Show get all registries API SERVER:</h3>
