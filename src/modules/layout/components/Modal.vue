@@ -14,13 +14,14 @@
       <slot />
       
       <q-card-actions align="right">
-        <q-btn v-if="textCancel" flat no-caps :label="textCancel" color="primary" @click="$emit('cancel')" v-close-popup />
+        <q-btn v-if="textCancel" data-cy="modal-button-cancel" flat no-caps :label="textCancel" color="primary" @click="$emit('cancel')" v-close-popup />
         <q-btn
           flat
           no-caps
           :label="textConfirm"
           color="primary"
           @click="$emit('confirm')"
+          data-cy="modal-button-confirm"
           v-close-popup
         />
       </q-card-actions>

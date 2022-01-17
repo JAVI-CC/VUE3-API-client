@@ -9,6 +9,7 @@
           color="white"
           name="email"
           label="Email"
+          data-cy="acceder-input-email"
           v-model="email"
           :rules="[
             (val) => v$.email.required.$response || 'Debes rellenar este campo',
@@ -27,6 +28,7 @@
           name="contraseña"
           clearable
           label="Contraseña"
+          data-cy="acceder-input-password"
           v-model="password"
           :type="pwdTextShow ? 'password' : 'text'"
           :rules="[
@@ -58,6 +60,7 @@
           rounded
           icon-right="lock_outline"
           label="Acceder"
+          data-cy="acceder-button-submit"
           type="submit"
         />
       </div>
@@ -65,7 +68,7 @@
   </div>
   <div class="div-sin-cuenta q-py-md q-px-lg text-center">
       <div class="text-h6 q-mb-md">¿ No tienes cuenta ?</div>
-       <q-btn outline class="text-h6" :class="dark ? 'text-white' : 'text-black'" padding="sm xl" no-caps label="Crear cuenta" @click="toRegister" />
+       <q-btn data-cy="acceder-button-crear-cuenta" outline class="text-h6" :class="dark ? 'text-white' : 'text-black'" padding="sm xl" no-caps label="Crear cuenta" @click="toRegister" />
   </div>
   <modal-info @confirm="closeModal" :open="modalError">
      <q-card-section>{{modalMessageError}}</q-card-section>

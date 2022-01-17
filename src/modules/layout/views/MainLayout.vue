@@ -47,6 +47,7 @@
           v-if="logged"
           flat
           no-caps
+          data-cy="footer-button-cerrar-sesion"
           :color="dark ? 'white' : 'dark'"
           icon="fas fa-lock"
           class="footer-pb-buttons"
@@ -57,6 +58,7 @@
           v-else
           flat
           no-caps
+          data-cy="footer-button-acceder"
           :color="dark ? 'white' : 'dark'"
           icon="fas fa-user-secret"
           class="footer-pb-buttons"

@@ -8,7 +8,7 @@ exports[`Pruebas en el Acceder Component debe de hacer match con el snapshot 1`]
 </div>
 <div class="div-sin-cuenta q-py-md q-px-lg text-center">
   <div class="text-h6 q-mb-md">¿ No tienes cuenta ?</div>
-  <q-btn-stub padding="sm xl" label="Crear cuenta" replace="false" exact="false" activeclass="q-router-link--active" exactactiveclass="q-router-link--exact-active" disable="false" type="button" round="false" outline="true" flat="false" unelevated="false" rounded="false" push="false" glossy="false" fab="false" fabmini="false" nocaps="true" nowrap="false" dense="false" ripple="true" align="center" stack="false" stretch="false" darkpercentage="false" class="text-h6 text-white"></q-btn-stub>
+  <q-btn-stub padding="sm xl" label="Crear cuenta" replace="false" exact="false" activeclass="q-router-link--active" exactactiveclass="q-router-link--exact-active" disable="false" type="button" round="false" outline="true" flat="false" unelevated="false" rounded="false" push="false" glossy="false" fab="false" fabmini="false" nocaps="true" nowrap="false" dense="false" ripple="true" align="center" stack="false" stretch="false" darkpercentage="false" data-cy="acceder-button-crear-cuenta" class="text-h6 text-white"></q-btn-stub>
 </div>
 <modal-info-stub open="false"></modal-info-stub>
 `;

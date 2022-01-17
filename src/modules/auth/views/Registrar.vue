@@ -9,6 +9,7 @@
           color="white"
           name="nombre"
           label="Nombre"
+          data-cy="registrar-input-nombre"
           v-model="nombre"
           :rules="[
             (val) => v$.nombre.required.$response || 'Debes rellenar este campo',
@@ -27,6 +28,7 @@
           color="white"
           name="email"
           label="Email"
+          data-cy="registrar-input-email"
           v-model="email"
           :rules="[
             (val) => v$.email.required.$response || 'Debes rellenar este campo',
@@ -45,6 +47,7 @@
           name="contraseña"
           clearable
           label="Contraseña"
+          data-cy="registrar-input-password"
           v-model="password"
           :type="pwdTextShow ? 'password' : 'text'"
           :rules="[
@@ -74,13 +77,20 @@
           name="confirmarContraseña"
           clearable
           label="repetir contraseña"
+          data-cy="registrar-input-password-confirmation"
           v-model="confirmPassword"
           :type="pwdTextShow ? 'password' : 'text'"
           :rules="[
             (val) => v$.confirmPassword.required.$response || 'Debes rellenar este campo',
-            (val) => v$.confirmPassword.minLength.$response || 'Debe de tener al menos 8 caracteres',
-            (val) => v$.confirmPassword.maxLength.$response || 'Debe de tener menos de 100 caracteres',
-            (val) => password == confirmPassword || 'La contraseña y repetir contraseña deben coincidir',
+            (val) =>
+              v$.confirmPassword.minLength.$response ||
+              'Debe de tener al menos 8 caracteres',
+            (val) =>
+              v$.confirmPassword.maxLength.$response ||
+              'Debe de tener menos de 100 caracteres',
+            (val) =>
+              password == confirmPassword ||
+              'La contraseña y repetir contraseña deben coincidir',
           ]"
         >
           <template v-slot:prepend>
@@ -99,18 +109,24 @@
       <div class="col-md-12">
         <q-btn
           no-caps
-          :disabled="v$.nombre.$invalid || v$.email.$invalid || v$.password.$invalid || v$.confirmPassword.$invalid"
+          :disabled="
+            v$.nombre.$invalid ||
+            v$.email.$invalid ||
+            v$.password.$invalid ||
+            v$.confirmPassword.$invalid
+          "
           color="primary"
           rounded
           icon-right="send"
           label="Registrar"
+          data-cy="registrar-button-submit"
           type="submit"
         />
       </div>
     </q-form>
   </div>
-  <modal-info @confirm="closeModal" :open="modalError"> 
-    <q-card-section>{{modalMessageError}}</q-card-section>
+  <modal-info @confirm="closeModal" :open="modalError">
+    <q-card-section>{{ modalMessageError }}</q-card-section>
   </modal-info>
 </template>
 
@@ -135,24 +151,29 @@ export default {
     const pwdTextShow = ref(true);
     const modalError = ref(false);
     const modalMessageError = ref("");
-    const formRegistrar = ref("")
+    const formRegistrar = ref("");
     return {
       //Methods
       closeModal() {
         modalError.value = false;
       },
       formRegister: async () => {
-        const logged = await register(nombre.value, email.value, password.value, confirmPassword.value);
+        const logged = await register(
+          nombre.value,
+          email.value,
+          password.value,
+          confirmPassword.value
+        );
         if (logged != true) {
           modalError.value = true;
           modalMessageError.value = logged;
         } else {
           notifAuth();
           inicio();
-          nombre.value = ""
-          email.value = ""
-          password.value = ""
-          confirmPassword.value = ""
+          nombre.value = "";
+          email.value = "";
+          password.value = "";
+          confirmPassword.value = "";
           formRegistrar.value.reset();
         }
       },
