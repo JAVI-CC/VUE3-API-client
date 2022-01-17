@@ -23,6 +23,7 @@
 <li>Slots.</li>
 <li>Emits.</li>
 <li>Websockets with Pusher.</li>
+<li>End to end tests with CYPRESS.</li>
 <li>Unit tests with JEST.</li>
 <li>The application is connected to a games API made in Laravel: <a href="https://github.com/JAVI-CC/Laravel-API-Server" target="_blank">https://github.com/JAVI-CC/Laravel-API-Server</a></li>
 </ul>
