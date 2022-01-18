@@ -67,11 +67,20 @@
     </q-form>
   </div>
   <div class="div-sin-cuenta q-py-md q-px-lg text-center">
-      <div class="text-h6 q-mb-md">¿ No tienes cuenta ?</div>
-       <q-btn data-cy="acceder-button-crear-cuenta" outline class="text-h6" :class="dark ? 'text-white' : 'text-black'" padding="sm xl" no-caps label="Crear cuenta" @click="toRegister" />
+    <div class="text-h6 q-mb-md">¿ No tienes cuenta ?</div>
+    <q-btn
+      data-cy="acceder-button-crear-cuenta"
+      outline
+      class="text-h6"
+      :class="dark ? 'text-white' : 'text-black'"
+      padding="sm xl"
+      no-caps
+      label="Crear cuenta"
+      @click="toRegister"
+    />
   </div>
   <modal-info @confirm="closeModal" :open="modalError">
-     <q-card-section>{{modalMessageError}}</q-card-section>
+    <q-card-section>{{ modalMessageError }}</q-card-section>
   </modal-info>
 </template>
 
@@ -83,34 +92,38 @@ import { required, email, minLength, maxLength } from "@vuelidate/validators";
 import useVuelidate from "@vuelidate/core/dist/index.es";
 export default {
   name: "Acceder",
-    components: {
-    ModalInfo: defineAsyncComponent(() => import('/src/modules/layout/components/Modal.vue')),
+  components: {
+    ModalInfo: defineAsyncComponent(() =>
+      import("/src/modules/layout/components/Modal.vue")
+    ),
   },
   setup() {
     const { dark } = useLayout();
-    const { login, inicio, notifLogin, toRegister, } = useAuth();
+    const { login, inicio, notifLogin, toRegister } = useAuth();
     const email = ref("");
     const password = ref("");
     const pwdTextShow = ref(true);
-    const modalError = ref(false)
-    const modalMessageError = ref("") 
-    const formAcceder = ref("")
+    const modalError = ref(false);
+    const modalMessageError = ref("");
+    const formAcceder = ref("");
     return {
       //Methods
-      closeModal(){
-        modalError.value = false
+      closeModal() {
+        modalError.value = false;
       },
-      formLogin: async() => {
-        const logged = await login(email.value, password.value)
-        if(logged != true) {
-          modalError.value = true
-          modalMessageError.value = logged.error
+      formLogin: async () => {
+        const logged = await login(email.value, password.value);
+        if (logged != true) {
+          modalError.value = true;
+          modalMessageError.value = logged.error;
         } else {
-           notifLogin()
-           inicio()
-           email.value = ""
-           password.value = ""
-          formAcceder.value.reset();
+          notifLogin();
+          inicio();
+          email.value = "";
+          password.value = "";
+          try {
+            formAcceder.value.reset();
+          } catch (error) {}
         }
       },
       toRegister,

@@ -174,7 +174,9 @@ export default {
           email.value = "";
           password.value = "";
           confirmPassword.value = "";
-          formRegistrar.value.reset();
+          try {
+            formRegistrar.value.reset();
+          } catch (error) {}
         }
       },
 

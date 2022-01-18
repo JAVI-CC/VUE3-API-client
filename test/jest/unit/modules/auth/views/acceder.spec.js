@@ -56,7 +56,7 @@ describe('Pruebas en el Acceder Component', () => {
         expect(modalInfo.attributes('open')).toBe("true")
     })
 
-    test.skip('credenciales correctas, redirige juegos', async () => {
+    test('credenciales correctas, redirige juegos', async () => {
         store.dispatch.mockReturnValue(true)
         wrapper.vm.email = 'test@email.com'
         wrapper.vm.password = '12345678'

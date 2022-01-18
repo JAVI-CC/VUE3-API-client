@@ -57,7 +57,7 @@ describe('Pruebas en el Registrar Component', () => {
 
     })
 
-    test.skip('cuenta creada correctamente, redirige juegos', async () => {
+    test('cuenta creada correctamente, redirige juegos', async () => {
 
         store.dispatch.mockReturnValue(true)
         wrapper.vm.nombre = 'test'
