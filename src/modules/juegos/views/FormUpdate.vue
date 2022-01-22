@@ -292,9 +292,7 @@ export default {
       },
       setGenero(val) {
         generosSelected.value = [];
-        for (let i = 0; i < val.length; i++) {
-          generosSelected.value[i] = sanitizeString(val[i]);
-        }
+        generosSelected.value = val.map(v => sanitizeString(v))
       },
       formUpdate: async () => {
         const payload = {
@@ -312,6 +310,7 @@ export default {
           modalUpdateJuego.value = true;
           error.value = true;
         } else {
+          generosSelected.value = []
           itemRedirectUpdate(res.value.slug);
           notifSuccess(`El juego ${editNombre.value} se ha actulizado correctamente`);
         }

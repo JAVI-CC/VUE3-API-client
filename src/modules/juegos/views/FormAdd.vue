@@ -265,9 +265,7 @@ export default {
       },
       setGenero(val) {
         generosSelected.value = [];
-        for (let i = 0; i < val.length; i++) {
-          generosSelected.value[i] = sanitizeString(val[i]);
-        }
+        generosSelected.value = val.map(v => sanitizeString(v))
       },
       formAdd: async () => {
         const payload = {

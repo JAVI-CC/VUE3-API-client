@@ -56,11 +56,9 @@ export const editDescripcion = (state) => {
 }
 
 export const editGeneros = (state) => {
-    const generosSelected = [];
+    let generosSelected = [];
     if (state.juego.generos != undefined) {
-        for (let i = 0; i < state.juego.generos.length; i++) {
-            generosSelected[i] = state.juego.generos[i].nombre;
-        }
+        generosSelected = state.juego.generos.map(gen => gen.nombre)
     }
     return generosSelected
 }

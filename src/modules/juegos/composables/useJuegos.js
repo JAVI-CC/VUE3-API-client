@@ -13,11 +13,8 @@ const useJuegos = () => {
     const makeString = (slug) => {
         let words = slug.split('-');
 
-        for (let i = 0; i < words.length; i++) {
-            let word = words[i];
-            words[i] = word.charAt(0).toUpperCase() + word.slice(1);
-        }
-
+        words = words.map(word => word.charAt(0).toUpperCase() + word.slice(1));
+        
         return words.join(' ');
     }
 
@@ -364,9 +361,7 @@ const useJuegos = () => {
             },
             set(val) {
                 let arrGeneros = []
-                for (let i = 0; i < val.length; i++) {
-                    arrGeneros.push({ "nombre": val[i] });
-                }
+                val.map(v => arrGeneros.push({ "nombre": v }) )
                 store.commit('juegos/setEditGeneros', arrGeneros)
             }
         }),
