@@ -44,14 +44,14 @@
         <div class="q-mt-sm q-mb-xs">
           <q-btn
             class="q-my-sm q-mr-sm text-caption text-weight-medium"
-            v-for="genero in juego.generos"
-            :key="genero.slug"
+            v-for="{slug, nombre} in juego.generos"
+            :key="slug"
             rounded
             no-caps
-            :color="genero.slug == generoSelected ? 'orange-6' : 'primary'"
+            :color="slug == generoSelected ? 'orange-6' : 'primary'"
             size="sm"
-            :label="genero.nombre"
-            @click="fetchGenero(genero.slug)"
+            :label="nombre"
+            @click="fetchGenero(slug)"
           />
         </div>
       </q-card-section>
