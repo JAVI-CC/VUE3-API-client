@@ -1,4 +1,5 @@
-import {isAuthenticatedGuard, isAlreadyAuthenticatedGuard} from '../modules/auth/router/authGuard'
+import juegosRouter from '../modules/juegos/router'
+import authRouter from '../modules/auth/router'
 
 const routes = [
   {
@@ -8,57 +9,9 @@ const routes = [
     component: () => import('../modules/layout/views/MainLayout'),
     children: [
       //Juegos
-      {
-        path: '',
-        name: 'juegos',
-        component: () => import(/* webpackChunkName: "Juegos" */ '/src/modules/juegos/views/Juegos.vue'),
-      },
-      {
-        path: '/busqueda/:search',
-        name: 'juegos-busqueda',
-        redirect: { name: 'juegos' }
-      },
-      {
-        path: '/:slug',
-        name: 'juego-item',
-        component: () => import(/* webpackChunkName: "JuegoItem" */ '/src/modules/juegos/views/JuegoItem.vue'),
-      },
-      {
-        path: '/desarrolladora/:desarrolladora',
-        name: 'juegos-desarrolladora',
-        redirect: { name: 'juegos' }
-      },
-      {
-        path: '/genero/:genero',
-        name: 'juegos-genero',
-        redirect: { name: 'juegos' }
-      },
-      {
-        path: '/form/crear',
-        name: 'juego-crear',
-        beforeEnter: [ isAuthenticatedGuard ],
-        component: () => import(/* webpackChunkName: "JuegoCrear" */ '/src/modules/juegos/views/FormAdd.vue'),
-      },
-      {
-        path: '/editar/:slug',
-        name: 'juego-editar',
-        beforeEnter: [ isAuthenticatedGuard ],
-        component: () => import(/* webpackChunkName: "JuegoEditar" */ '/src/modules/juegos/views/FormUpdate.vue'),
-      },
-      
+      ...juegosRouter,
       //Auth
-      {
-        path: '/auth/acceder',
-        name: 'acceder',
-        beforeEnter: [ isAlreadyAuthenticatedGuard ],
-        component: () => import(/* webpackChunkName: "Acceder" */ '/src/modules/auth/views/Acceder.vue'),
-      },
-      {
-        path: '/auth/registrar',
-        name: 'registrar',
-        beforeEnter: [ isAlreadyAuthenticatedGuard ],
-        component: () => import(/* webpackChunkName: "Registrar" */ '/src/modules/auth/views/Registrar.vue'),
-      },
+      ...authRouter
     ]
   },
 

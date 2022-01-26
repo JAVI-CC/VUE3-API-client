@@ -22,6 +22,7 @@
   "dependencies": {
     "@capacitor/cli": "^3.3.3",
     "@capacitor/core": "^3.3.3",
+    "@quasar/cli": "^1.2.2",
     "@quasar/extras": "^1.0.0",
     "@quasar/icongenie": "^2.4.2",
     "@vuelidate/core": "^2.0.0-alpha.32",
@@ -29,6 +30,7 @@
     "axios": "^0.21.1",
     "concurrently": "^7.0.0",
     "core-js": "^3.6.5",
+    "cypress": "9.3.1",
     "laravel-echo": "^1.11.3",
     "pusher-js": "^7.0.3",
     "quasar": "^2.0.0",
