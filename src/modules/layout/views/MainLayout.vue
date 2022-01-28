@@ -172,7 +172,7 @@ export default {
 
   setup() {
     const { busqueda, changeTheme, inicio, webShare, toTop, dark } = useLayout();
-    const { inicio:home, logged, logout, nombre, notifLogout } = useAuth();
+    const { logoutRedirect, logged, logout, nombre, notifLogout } = useAuth();
     const { fetchJuegos, formSearch, showButtonAdd } = useJuegos();
     const search = ref("");
     const modalSearchNotResults = ref(false);
@@ -194,7 +194,7 @@ export default {
         modalCerrarSesion.value = false;
         const resp = await logout();
         if (resp) {
-          home();
+          logoutRedirect();
           notifLogout();
         }
       },

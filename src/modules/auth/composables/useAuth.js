@@ -43,6 +43,10 @@ const useAuth = () => {
     return resp
   }
 
+  const logoutRedirect = () => {
+    if(!['juegos', 'juego-item'].includes(route.name)) router.push({ name: "juegos" });
+  }
+
   const notifLogin = () => {
     Notify.create({
       type: 'positive',
@@ -76,6 +80,7 @@ const useAuth = () => {
     loggedStatus,
     login,
     logout,
+    logoutRedirect,
     notifAuth,
     notifLogin,
     notifLogout,
