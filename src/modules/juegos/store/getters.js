@@ -1,45 +1,5 @@
-export const juegos = (state) => {
-    return state.juegos
-}
-
-export const juego = (state) => {
-    return state.juego
-}
-
 export const page = (state) => {
     return state.page + 1
-}
-
-export const search = (state) => {
-    return state.search
-}
-
-export const desarrolladora = (state) => {
-    return state.desarrolladora
-}
-
-export const genero = (state) => {
-    return state.genero
-}
-
-export const paginateActive = (state) => {
-    return state.paginateActive
-}
-
-export const order = (state) => {
-    return state.order
-}
-
-export const generos = (state) => {
-    return state.generos
-}
-
-export const items = (state) => {
-    return state.items
-}
-
-export const isLoading = (state) => {
-    return state.isLoading
 }
 
 //Update
@@ -73,8 +33,4 @@ export const editFecha = (state) => {
 
 export const editSlug = (state) => {
     return state.juego.slug
-}
-
-export const imageInitial = (state) => {
-    return state.imageInitial
 }

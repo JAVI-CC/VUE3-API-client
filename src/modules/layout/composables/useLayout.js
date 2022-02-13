@@ -24,7 +24,7 @@ const useLayout = () => {
     }
 
     const inicio = async () => {
-        const filters = { page: 1, order: { value: null }, items: store.getters['juegos/items'] }
+        const filters = { page: 1, order: { value: null }, items: store.state.juegos.items }
         if (route.fullPath === "/") {
             window.scrollTo(0,10)
             await store.dispatch('juegos/fetchJuegos', filters)
@@ -39,8 +39,8 @@ const useLayout = () => {
 
     const webShare = () => {
         let url = route.fullPath
-        if (store.getters['juegos/genero']) url = `/genero/${store.getters['juegos/genero']}`
-        else if (store.getters['juegos/desarrolladora']) url = `/desarrolladora/${store.getters['juegos/desarrolladora']}`
+        if (store.state.juegos.genero) url = `/genero/${store.state.juegos.genero}`
+        else if (store.state.juegos.desarrolladora) url = `/desarrolladora/${store.state.juegos.desarrolladora}`
         else if (route.params.search) url = `/busqueda/${route.params.search}`
         navigator.share({
             title: "JAVI-CC JUEGOS API",
@@ -59,7 +59,7 @@ const useLayout = () => {
         webShare,
 
         //Variables
-        dark: computed(() => store.getters['layout/dark']),
+        dark: computed(() => store.state.layout.dark),
     }
 }
 

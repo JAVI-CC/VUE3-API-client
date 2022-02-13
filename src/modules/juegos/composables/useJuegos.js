@@ -29,8 +29,8 @@ const useJuegos = () => {
     }
 
     const juegosScreenItems = () => {
-        let items = store.getters['juegos/items']
-        if (!store.getters['juegos/items']) {
+        let items = store.state.juegos.items
+        if (!store.state.juegos.items) {
             if (Screen.width <= 1304) {
                 items = 8
             } else if (Screen.width > 1304 && Screen.width <= 1622) {
@@ -48,7 +48,7 @@ const useJuegos = () => {
             } else if (Screen.width >= 3213)
                 items = 20
         } else {
-            return store.getters['juegos/items']
+            return store.state.juegos.items
         }
         store.commit('juegos/setScreenItems', items)
         return items
@@ -66,18 +66,18 @@ const useJuegos = () => {
     const formSearch = async (keyword) => {
         let filter = 'nombre'
         let order = 'ASC'
-
-        if (store.getters['juegos/order']) {
-            if (store.getters['juegos/order'].value == 'nombreAsc') {
+        
+        if (store.state.juegos.order) {
+            if (store.state.juegos.order.value == 'nombreAsc') {
                 filter = 'nombre'
                 order = 'ASC'
-            } else if (store.getters['juegos/order'].value == 'nombreDesc') {
+            } else if (store.state.juegos.order.value == 'nombreDesc') {
                 filter = 'nombre'
                 order = 'DESC'
-            } else if (store.getters['juegos/order'].value == 'fechaAsc') {
+            } else if (store.state.juegos.order.value == 'fechaAsc') {
                 filter = 'fecha'
                 order = 'ASC'
-            } else if (store.getters['juegos/order'].value == 'fechaDesc') {
+            } else if (store.state.juegos.order.value == 'fechaDesc') {
                 filter = 'fecha'
                 order = 'DESC'
             }
@@ -92,11 +92,11 @@ const useJuegos = () => {
         const resp = await store.dispatch('juegos/searchJuegos', searchJuegos)
 
         if (!resp.error) {
-            if (!store.getters['juegos/search'] || store.getters['juegos/search'] != keyword) {
+            if (!store.state.juegos.search || store.state.juegos.search != keyword) {
                 resetOrderSearch()
                 order = 'ASC'
-            } else if (store.getters['juegos/order']) {
-                if (store.getters['juegos/order'].value == null) {
+            } else if (store.state.juegos.order) {
+                if (store.state.juegos.order.value == null && !store.state.juegos.search) {
                     resetOrderSearch()
                     order = 'ASC'
                 }
@@ -108,13 +108,13 @@ const useJuegos = () => {
 
     const fetchJuegos = async () => {
         if (route.fullPath != "/") router.push({ name: "juegos" });
-        const filters = { page: store.getters['juegos/page'], order: store.getters['juegos/order'], items: store.getters['juegos/items'] }
+        const filters = { page: store.getters['juegos/page'], order: store.state.juegos.order, items: store.state.juegos.items }
         const resp = await store.dispatch('juegos/fetchJuegos', filters)
         return resp
     }
 
     const fetchJuegosOrder = async () => {
-        if (store.getters['juegos/search']) return formSearch(store.getters['juegos/search'])
+        if (store.state.juegos.search) return formSearch(store.state.juegos.search)
         //else if (store.getters['juegos/desarrolladora']) return fetchDesarrolladora(store.getters['juegos/desarrolladora'])
         //else if (store.getters['juegos/genero']) return fetchGenero(store.getters['juegos/genero'])
         return fetchJuegos()
@@ -271,7 +271,7 @@ const useJuegos = () => {
     }
 
     const addJuegoPusher = async (juego) => {
-        if (!store.getters['juegos/desarrolladora'] && !store.getters['juegos/genero'] && !store.getters['juegos/order'] && !store.getters['juegos/search']) return await store.commit('juegos/setPusherAddJuego', juego)
+        if (!store.state.juegos.desarrolladora && !store.state.juegos.genero && !store.state.juegos.order && !store.state.juegos.search) return await store.commit('juegos/setPusherAddJuego', juego)
     }
 
     const updateJuegoPusher = async (juego, oldSlug) => {
@@ -310,16 +310,16 @@ const useJuegos = () => {
         webShareJuego,
 
         //Variables
-        juegos: computed(() => store.getters['juegos/juegos']),
-        juego: computed(() => store.getters['juegos/juego']),
-        juegoSearch: computed(() => store.getters['juegos/search']),
+        juegos: computed(() => store.state.juegos.juegos),
+        juego: computed(() => store.state.juegos.juego),
+        juegoSearch: computed(() => store.state.juegos.search),
         page: computed(() => store.getters['juegos/page']),
-        desarrolladoraSelected: computed(() => store.getters['juegos/desarrolladora']),
-        generos: computed(() => store.getters['juegos/generos']),
-        generoSelected: computed(() => store.getters['juegos/genero']),
+        desarrolladoraSelected: computed(() => store.state.juegos.desarrolladora),
+        generos: computed(() => store.state.juegos.generos),
+        generoSelected: computed(() => store.state.juegos.genero),
         orderSelected: computed({
             get() {
-                return store.getters['juegos/order']
+                return store.state.juegos.order
             },
             set(val) {
                 if (val == null) val = { label: '', value: null }
@@ -327,9 +327,9 @@ const useJuegos = () => {
             }
         }),
         isHome: computed(() => route.name == 'juegos'),
-        isLoading: computed(() => store.getters['juegos/isLoading']),
-        showButtonAdd: computed(() => store.getters['auth/logged'] && (route.name == 'juego-item' || route.name == 'juegos')),
-        paginateActive: computed(() => store.getters['juegos/paginateActive']),
+        isLoading: computed(() => store.state.juegos.isLoading),
+        showButtonAdd: computed(() => store.state.auth.logged && (route.name == 'juego-item' || route.name == 'juegos')),
+        paginateActive: computed(() => store.state.juegos.paginateActive),
         //Update
         editNombre: computed({
             get() {
@@ -382,7 +382,7 @@ const useJuegos = () => {
             }
         }),
         editSlug: computed(() => store.getters['juegos/editSlug']),
-        imageInitial: computed(() => store.getters['juegos/imageInitial']),
+        imageInitial: computed(() => store.state.juegos.imageInitial),
 
     }
 }

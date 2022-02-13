@@ -8,7 +8,7 @@ import * as mutations from './mutations'
 const authModule = {
     namespaced: true,
     actions,
-    getters,
+    //getters,
     mutations,
     state
 }

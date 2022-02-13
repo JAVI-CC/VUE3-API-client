@@ -109,16 +109,16 @@ describe('Vuex: Pruebas en el auth-module', () => {
         expect(typeof LocalStorage.getItem('token')).toBe('string')
     })
 
-    /**************************************** Getters ****************************************/
-    test('Getter: logged nombre', () => {
+    /**************************************** State ****************************************/
+    test('State: logged nombre', () => {
 
         const store = createVuexStore({
             logged: true,
             user: { email: 'test@email.com', logged: true, name: 'Test' },
         })
 
-        expect(store.getters['auth/logged']).toBeTruthy()
-        expect(store.getters['auth/nombre']).toBe('Test')
+        expect(store.state.auth.logged).toBeTruthy()
+        expect(store.state.auth.user.name).toBe('Test')
     })
 
     /**************************************** Actions ****************************************/

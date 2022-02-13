@@ -88,8 +88,8 @@ const useAuth = () => {
     toRegister,
 
     //Variables
-    logged: computed(() => store.getters['auth/logged']),
-    nombre: computed(() => store.getters['auth/nombre']),
+    logged: computed(() => store.state.auth.logged),
+    nombre: computed(() => store.state.auth.user.name),
 
   }
 }
