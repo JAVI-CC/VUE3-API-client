@@ -90,7 +90,7 @@ import useAuth from "../composables/useAuth";
 import useLayout from "src/modules/layout/composables/useLayout";
 import { required, email, minLength, maxLength } from "@vuelidate/validators";
 import useVuelidate from "@vuelidate/core/dist/index.es";
-import titlePageName from "src/modules/layout/helpers/titlePage"
+import titlePageName from "src/modules/layout/helpers/Meta/titlePage"
 export default {
   name: "Acceder",
   components: {

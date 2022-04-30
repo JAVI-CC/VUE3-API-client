@@ -8,7 +8,7 @@
 <script>
 import { ref, defineAsyncComponent, onMounted } from "vue";
 import useJuegos from "../composables/useJuegos";
-import titlePageName from "src/modules/layout/helpers/titlePage"
+import titlePageName from "src/modules/layout/helpers/Meta/titlePage"
 export default {
   components: {
     JuegoList: defineAsyncComponent(() => import('../components/JuegoList.vue')),

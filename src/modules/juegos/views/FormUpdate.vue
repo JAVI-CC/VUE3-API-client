@@ -193,7 +193,7 @@ import useJuegos from "../composables/useJuegos";
 import sanitizeString from "/src/modules/layout/helpers/sanitizeString";
 import { required, minLength, maxLength } from "@vuelidate/validators";
 import useVuelidate from "@vuelidate/core/dist/index.es";
-import titlePageName from "src/modules/layout/helpers/titlePage"
+import titlePageName from "src/modules/layout/helpers/Meta/titlePage"
 export default {
   name: "Form",
   components: {

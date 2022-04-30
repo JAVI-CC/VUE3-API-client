@@ -68,9 +68,10 @@
 </template>
 
 <script>
-import { defineAsyncComponent, onActivated, ref} from "vue";
+import { defineAsyncComponent, onActivated, onDeactivated, ref} from "vue";
 import useJuegos from "../composables/useJuegos";
-import titlePageName from "src/modules/layout/helpers/titlePage";
+import titleNameTemplate from "src/modules/layout/helpers/Meta/titlePageNameTemplate";
+import { useMeta } from 'quasar';
 export default {
   name: "JuegoItem",
   components: {
@@ -87,14 +88,16 @@ export default {
     const modalSearchNotResults = ref(false) 
 
     onActivated(async () => {
+      useMeta(() => { return {title: res.value?.nombre, titleTemplate: title => `${titleNameTemplate} ${title}`}})
       res.value = await item();
-      titlePageName(res.value.nombre);
       if(res.value.error) {
         if(res.value.error == true) res.value.error = res.value.message
         modalSearchNotResults.value = true
         error.value = true
       } 
     });
+
+    onDeactivated(() => res.value = "");
 
     return {
       //Methods
