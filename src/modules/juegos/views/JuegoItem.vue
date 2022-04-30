@@ -70,6 +70,7 @@
 <script>
 import { defineAsyncComponent, onActivated, ref} from "vue";
 import useJuegos from "../composables/useJuegos";
+import titlePageName from "src/modules/layout/helpers/titlePage";
 export default {
   name: "JuegoItem",
   components: {
@@ -87,6 +88,7 @@ export default {
 
     onActivated(async () => {
       res.value = await item();
+      titlePageName(res.value.nombre);
       if(res.value.error) {
         if(res.value.error == true) res.value.error = res.value.message
         modalSearchNotResults.value = true

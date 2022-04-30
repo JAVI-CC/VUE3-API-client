@@ -8,12 +8,14 @@
 <script>
 import { ref, defineAsyncComponent, onMounted } from "vue";
 import useJuegos from "../composables/useJuegos";
+import titlePageName from "src/modules/layout/helpers/titlePage"
 export default {
   components: {
     JuegoList: defineAsyncComponent(() => import('../components/JuegoList.vue')),
     ModalInfo: defineAsyncComponent(() => import('/src/modules/layout/components/Modal.vue')),
   },
   setup() {
+    titlePageName('Página principal');
     const { redirectJuegos, juegosInitial } = useJuegos();
     const res = ref("")
     const error = ref(false)
