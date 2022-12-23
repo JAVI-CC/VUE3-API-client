@@ -85,7 +85,7 @@
 <h3>Create or update registrer sending it to the API SERVER:</h3>
 <p align="center"><img src="public/capturas/captura3.png"></p>
 
-<h3>Application web responsive:</h3>
+<h3>Application web responsive: </h3>
 <p align="center"><img src="public/capturas/captura4.png"></p>
 
 <h2>Deploy to Docker <g-emoji class="g-emoji" alias="whale" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f433.png">🐳</g-emoji></h2>
