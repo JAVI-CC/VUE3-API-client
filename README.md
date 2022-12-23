@@ -1,6 +1,6 @@
 <p align="center"><img src="public/capturas/logo.png" width="400"></p>
 
-<p>Application made with Vue 3 using Quasar Framework that contains responsive web interface, PWA and exported in APK using Apache Cordova and capacitor. The application is connected to an API made in Laravel.<a href="https://web-production-8893.up.railway.app" target="_blank">https://web-production-8893.up.railway.app</a></p>
+<p>Application made with Vue 3 using Quasar Framework that contains responsive web interface, PWA and exported in APK using Apache Cordova and capacitor. The application is connected to an API made in Laravel.<a href="https://laravel-api-server.up.railway.app↗" target="_blank">https://laravel-api-server.up.railway.app↗</a></p>
 
 <span>Application made with Vue 3 consists of the creation of a CRUD and authentication system that come from a games API and the development of styles using Quasar Framework. The application made with Vue 3 contains the following functionalities:</span>
 
