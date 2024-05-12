@@ -97,6 +97,9 @@
 <pre>
 <code>$ git clone https://github.com/JAVI-CC/VUE3-API-client.git
 $ cd VUE3-API-client
+$ cd VUE3-API-client
+$ cp development.env.example development.env
+$ cp production.env.example production.env
 $ docker-compose up -d</code>
 </pre>
 
