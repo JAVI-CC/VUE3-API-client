@@ -1,11 +1,16 @@
-version: '3.7' 
+version: '3'
+
 services:
-  quasar: 
-    build: 
-      context:  . 
-      target: 'develop-step' 
-    ports: 
-    - '8080:8080' 
-    volumes: 
-    - '.:/app' 
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: 'develop-stage'
+    image: javi98/vue-quasar-juegos-api:1.0.0
+    container_name: vue-quasar-juegos-api-app
     command: /bin/sh -c "yarn && quasar dev"
+    ports:
+      - '9000:9000'
+    volumes:
+      - '.:/src'
+      - /src/node_modules

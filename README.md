@@ -52,6 +52,9 @@
 <h2>Start the app in the electron mode</h2>
 <pre><code>$ yarn && quasar dev -m electron</code></pre>
 
+<h2>Export the app in EXE electron in the production mode</h2>
+<pre><code>$ yarn && quasar build -m electron</code></pre>
+
 <h2>Start the websockets with Pusher in the development mode (Optional)</h2>
 <pre><code>1. In your <a href="https://pusher.com/" target="_blank">Pusher account</a> create a channel called: <strong>juegos-api</strong></code></pre>
 <pre><code>2. Enter the file: <strong>development.env</strong></code></pre>
@@ -94,7 +97,33 @@
 <pre>
 <code>$ git clone https://github.com/JAVI-CC/VUE3-API-client.git
 $ cd VUE3-API-client
-$ docker-compose up -d --build</code>
+$ docker-compose up -d</code>
 </pre>
 
-<span>Once you have the containers deployed, you can access the APP at </span> <a href="http://localhost:8080" target="_blank">http://localhost:8080</a>
+<h4>Running mode dev:</h4>
+<pre>
+<code>$ docker compose up</code>
+</pre>
+
+<h4>Running mode build:</h4>
+<pre>
+<code>$ docker compose up -d</code>
+<code>$ docker compose exec app quasar build -m pwa</code>
+</pre>
+
+<h4>Running mode prod:</h4>
+<span>It is about creating a new container that contains the application once the build is done on the nginx web server listening on port <code>:85->80/tcp</code>
+</span>
+<div class="highlight highlight-source-shell"><pre>├── vue-quasar-crud-template-app-prod
+</pre></div><pre>
+<code>$ docker compose -f docker-compose.prod.yml up -d</code>
+</pre>
+
+<br>
+
+<p>In case you are using your IDE to develop the application and it does not detect the files it contains within the <strong>node_modules folder</strong>, you have to copy the files from the node_modules folder of the container to the host machine with the following command.</p>
+<pre>
+<code>$ docker compose cp app:/src/node_modules .</code>
+</pre>
+
+<span>Once you have the containers deployed, you can access the APP at </span> <a href="http://localhost:9000" target="_blank">http://localhost:9000</a>

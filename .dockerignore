@@ -32,5 +32,9 @@ yarn-error.log*
 *.njsproj
 *.sln
 
-development.env
-production.env
+Dockerfile
+
+.git
+.dockerignore
+.gitignore
+README.md
